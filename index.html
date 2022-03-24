@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <div id="app">
+        <form id="qrForm" action="" method="get">
+            <h2>Qr Code Generator</h2>
+            <p><a href="/scan/">QR Code Scanner →</a></p>
+            <hr />
+            <div class="formInput mainInput">
+                <input type="text" name="content" id="contentInput" placeholder=" " autocomplete="off" spellcheck="off"
+                    required />
+                <label for="content">Aa...</label>
+                <ion-icon name="clipboard-outline" id="pasteBtn"></ion-icon>
+            </div>
+            <h3 id="optionalText">Optional:</h3>
+            <div class="optionalInput">
+                <div class="formInput">
+                    <select name="format" id="formatInput">
+                        <option value="jpg">.jpg</option>
+                        <option value="jpeg">.jpeg</option>
+                        <option value="png">.png</option>
+                        <option value="gif">.gif</option>
+                        <option value="svg">.svg</option>
+                        <option value="eps">.eps</option>
+                    </select>
+                    <label for="format">Format</label>
+                </div>
+                <div class="formInput">
+                    <input type="number" name="size" id="sizeInput" placeholder=" " autocomplete="off" spellcheck="off"
+                        min="10" max="1000" />
+                    <label for="size">Size</label>
+                    <span class="unit">px</span>
+                </div>
+                <div class="formInput">
+                    <input type="number" name="margin" id="marginInput" placeholder=" " autocomplete="off"
+                        spellcheck="off" min="0" max="50" value="20" />
+                    <label for="margin">Margin</label>
+                    <span class="unit">px</span>
+                </div>
+            </div>
+            <div class="optionalInput colorInputs">
+                <div class="formInput">
+                    <input type="color" name="color" id="colorInput" value="#000000" />
+                    <label for="color">Color</label>
+                    <ion-icon name="refresh-outline" class="refreshBtn color"></ion-icon>
+                </div>
+                <div class="formInput">
+                    <input type="color" name="bgColor" id="bgColorInput" value="#FFFFFF" /div>
+                    <label for="bgColor">BG Color</label>
+                    <ion-icon name="refresh-outline" class="refreshBtn bgColor"></ion-icon>
+                </div>
+            </div>
+            <button type="submit" id="generateBtn">
+                Generate
+                <div class="circle-loading"></div>
+            </button>
+        </form>
+        <div id="qrListContainer">
+            <h2>Generated QRs</h2>
+            <ui id="qrList"> </ui>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,346 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+}
+
+html,
+body {
+	height: 100%;
+}
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+	font: inherit;
+	outline: none;
+	border: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+body {
+	height: 100vh;
+	width: 100%;
+	overflow: hidden;
+	background-color: #fafafa;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "poppins", sans-serif;
+}
+button {
+	cursor: pointer;
+}
+hr {
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	width: 100%;
+	max-width: 200px;
+	margin-bottom: 10px;
+	z-index: 999;
+}
+#app {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+form {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	transition: 0.2s ease-in-out;
+	user-select: none;
+	padding: 0 1rem;
+}
+form .formInput {
+	position: relative;
+	width: 100%;
+	width: 300px;
+	background: #fafafa;
+	border: 1px solid cornflowerblue;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+form .formInput input {
+	width: 100%;
+	padding: 0.5rem 1rem;
+	transition: 0.2s ease-in-out;
+	border-radius: inherit;
+	background: transparent;
+}
+form .formInput label,
+form .formInput ion-icon {
+	position: absolute;
+	top: 50%;
+	left: 1rem;
+	padding: 0 5px;
+	transform: translateY(-50%);
+	pointer-events: none;
+	color: cornflowerblue;
+	opacity: 0.5;
+	transition: 0.2s ease-in-out;
+	background: #fafafa;
+	line-height: 1.15;
+}
+form .formInput #pasteBtn {
+	cursor: pointer;
+	pointer-events: all;
+	font-size: 1.5rem;
+	right: 0.25rem;
+	background: transparent;
+	opacity: 0.5;
+}
+.colorInputs .refreshBtn:hover,
+#pasteBtn:hover {
+	opacity: 1 !important;
+}
+form .formInput ion-icon {
+	opacity: 1;
+	left: unset;
+	right: 0.5rem;
+}
+form .formInput input:not(:placeholder-shown) + label {
+	top: 0;
+	opacity: 1;
+}
+form button {
+	padding: 0.5rem 2rem;
+	font-weight: 500;
+	font-size: 1rem;
+	border: 1px solid cornflowerblue;
+	border-radius: 50px;
+	color: cornflowerblue;
+	transition: 0.2s ease-in-out;
+	position: relative;
+}
+form button:hover {
+	background: cornflowerblue;
+	color: #fafafa;
+}
+#urlInput {
+	padding-right: 2.5rem;
+}
+form #fileInput ion-icon {
+	padding: 0;
+	pointer-events: all;
+}
+form #fileInput #closePreviewBtn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 2rem;
+	transform: none;
+	transition: 0.2s ease-in-out;
+	opacity: 0;
+	pointer-events: none;
+}
+form #fileInput #closePreviewBtn:hover {
+	opacity: 1;
+}
+form #fileInput.active #closePreviewBtn {
+	opacity: 1;
+	pointer-events: all;
+	background: none;
+	z-index: 999;
+}
+form #fileInput #fileBtn {
+	position: relative;
+	top: 0;
+	left: 0;
+	transform: none;
+	font-size: 3rem;
+	pointer-events: none;
+}
+form #fileInput.active #fileBtn {
+	opacity: 0;
+}
+form #fileInput {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	overflow: hidden;
+}
+form #fileInput #imageContainer {
+	position: relative;
+	cursor: pointer;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 298px;
+}
+form #fileInput #imageContainer img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	position: absolute;
+	opacity: 0;
+	aspect-ratio: 1;
+}
+form #fileInput.active #imageContainer img {
+	opacity: 1;
+}
+form #fileInput #fileName {
+	width: 100%;
+	text-align: center;
+	z-index: 10;
+	background: cornflowerblue;
+	color: #fafafa;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 0 1rem;
+}
+form.scanning #imageContainer,
+form.scanning .formInput #pasteBtn,
+form.scanning .formInput #urlInput {
+	pointer-events: none;
+}
+form.scanning .circle-loading {
+	opacity: 1;
+}
+form.scanning button {
+	pointer-events: none;
+	background: cornflowerblue;
+	color: cornflowerblue;
+}
+.circle-loading {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 15rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	margin: 0 auto;
+	--color: #fafafa;
+	transition: 0.2s ease-in-out;
+}
+.circle-loading:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+	border: 0.25rem solid transparent;
+	border-right-color: var(--color);
+	border-bottom-color: var(--color);
+	animation: circleLoading 1s forwards infinite linear;
+}
+@keyframes circleLoading {
+	to {
+		transform: rotate(360deg);
+	}
+}
+#result {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #fafafa;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+	width: 50%;
+	max-width: 500px;
+	padding: 1rem;
+	border-radius: 10px;
+	z-index: 10000;
+	opacity: 0;
+	visibility: hidden;
+}
+#result.show {
+	opacity: 1;
+	visibility: visible;
+}
+#overlay {
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(226deg, #3e3e3e80 0, #00000080 100%);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	transition: 0.2s ease-in-out;
+	opacity: 0;
+	visibility: hidden;
+}
+#overlay.show {
+	opacity: 1;
+	visibility: visible;
+}
+#closeResultBtn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 2rem;
+	cursor: pointer;
+}
+#origin {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-right: 2rem;
+}
+#resultText {
+	position: relative;
+	font-size: 2rem;
+}
+#copyResultBtn {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+header {
+	display: flex;
+}
+#status {
+	margin-left: 5px;
+}
+#finalResult {
+	position: relative;
+	width: 100%;
+}
+@media only screen and (max-width: 425px) {
+	#result {
+		width: 90%;
+	}
+}

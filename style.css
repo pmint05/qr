@@ -1,0 +1,446 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+}
+
+html,
+body {
+	height: 100%;
+}
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+	font: inherit;
+	outline: none;
+	border: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+body {
+	height: 100vh;
+	width: 100%;
+	overflow: hidden;
+	background-color: #fafafa;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "poppins", sans-serif;
+}
+input:disabled, button:disabled, textarea:disabled, select:disabled, input:disabled ~ label, input:disabled ~ span {
+    opacity: 0.5 !important;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+button {
+	cursor: pointer;
+}
+hr {
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	width: 100%;
+	max-width: 200px;
+	margin-bottom: 10px;
+	z-index: 999;
+}
+#app {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+}
+#qrForm {
+	min-width: 100%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	transition: 0.2s ease-in-out;
+	user-select: none;
+	padding: 0 1rem;
+}
+#app.active #qrForm {
+	min-width: 50%;
+}
+#qrForm .formInput {
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	background: #fafafa;
+	border: 1px solid cornflowerblue;
+	border-radius: 10px;
+}
+#qrForm .formInput input,
+#qrForm .formInput select {
+	width: 100%;
+	padding: 0.5rem 1rem;
+	transition: 0.2s ease-in-out;
+	border-radius: inherit;
+	background: transparent;
+}
+#qrForm .formInput label,
+#qrForm .formInput .unit,
+#qrForm .formInput ion-icon {
+	position: absolute;
+	top: 50%;
+	left: 1rem;
+	padding: 0 5px;
+	transform: translateY(-50%);
+	pointer-events: none;
+	color: cornflowerblue;
+	opacity: 0.5;
+	transition: 0.2s ease-in-out;
+	background: #fafafa;
+	line-height: 1.15;
+}
+#qrForm .formInput .unit,
+#qrForm .formInput ion-icon {
+	opacity: 1;
+	left: unset;
+	right: 0.5rem;
+}
+#qrForm input[type="number"] {
+	padding-right: 2.5rem;
+}
+#qrForm .formInput input:not(:placeholder-shown) + label {
+	top: 0;
+	opacity: 1;
+}
+#qrForm select ~ label {
+	top: 0 !important;
+	opacity: 1 !important;
+}
+#qrForm button {
+	padding: 0.5rem 2rem;
+	font-weight: 500;
+	font-size: 1rem;
+	border: 1px solid cornflowerblue;
+	border-radius: 50px;
+	color: cornflowerblue;
+	transition: 0.2s ease-in-out;
+	position: relative;
+}
+#qrForm.loading .circle-loading {
+	opacity: 1;
+}
+#qrForm.loading button {
+	pointer-events: none;
+}
+.circle-loading {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 15rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	margin: 0 auto;
+	--color: #fafafa;
+	transition: 0.2s ease-in-out;
+}
+.circle-loading:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+	border: 0.25rem solid transparent;
+	border-right-color: var(--color);
+	border-bottom-color: var(--color);
+	animation: circleLoading 1s forwards infinite linear;
+}
+@keyframes circleLoading {
+	to {
+		transform: rotate(360deg);
+	}
+}
+#qrForm button:hover,
+#qrForm.loading button {
+	background: cornflowerblue;
+	color: #fafafa;
+}
+#qrForm.loading button {
+	cursor: default;
+	color: cornflowerblue;
+}
+#qrForm .mainInput {
+	margin-bottom: 15px;
+}
+#qrForm .mainInput input {
+	padding-right: 2.5rem;
+}
+#optionalText {
+	width: 100%;
+	max-width: 400px;
+	margin-bottom: 15px;
+}
+.optionalInput {
+	display: flex;
+	width: 100%;
+	max-width: 400px;
+	margin-bottom: 15px;
+}
+.optionalInput .formInput + .formInput {
+	margin-left: 15px;
+}
+.colorInputs .formInput {
+	padding-right: 2.5rem;
+	border: 1px solid cornflowerblue;
+	border-radius: 10px;
+}
+.colorInputs input {
+	-webkit-appearance: none;
+	border: none;
+	height: 70px;
+	cursor: pointer;
+	border: none;
+	padding: 0.75rem 0 0.75rem 0.75rem !important;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
+#qrForm .colorInputs .refreshBtn,
+#qrForm .formInput #pasteBtn {
+	cursor: pointer;
+	pointer-events: all;
+	font-size: 1.5rem;
+	right: 0.25rem;
+	background: transparent;
+	opacity: 0.5;
+}
+.colorInputs .refreshBtn:hover,
+#pasteBtn:hover {
+	opacity: 1 !important;
+}
+#qrListContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	transform: translateX(100%);
+	transition: 0.2s ease-in-out;
+	padding: 1rem 0;
+	position: relative;
+}
+#app.active #qrListContainer {
+	width: 50%;
+	transform: translateX(0);
+}
+#qrList {
+	--gap: 1rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	grid-gap: var(--gap);
+	width: auto;
+	max-width: 100%;
+	padding: 0.5rem 1rem;
+	overflow-y: auto;
+	grid-auto-flow: dense;
+	z-index: 99;
+	position: relative;
+}
+::-webkit-scrollbar {
+	width: 8px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #ccc;
+	border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+	background-color: #fafafa;
+	border-radius: 4px;
+}
+.qrItem {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 1rem;
+	padding-bottom: 0.25rem;
+	border-radius: 10px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+	transition: 0.2s ease-in-out;
+}
+.qrItem:hover {
+	transform: translateY(-8px);
+}
+.qrItem img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1;
+	opacity: 0;
+	transition: 0.2s ease-in-out;
+}
+.qrItem .qrImgContainer {
+	width: 100%;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.qrItem .qrImgContainer .circle-loading {
+	--color: cornflowerblue;
+	opacity: 1;
+	z-index: 999;
+	background: #fafafa;
+}
+.qrItem .qrImgContainer:hover .size {
+	opacity: 0.7;
+}
+.qrItem .qrImgContainer .size {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	font-weight: 800;
+	background: #000;
+	color: cornflowerblue;
+	transition: 0.2s ease-in-out;
+	opacity: 0;
+	pointer-events: none;
+}
+.qrItem .qrOrigin {
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: cornflowerblue;
+}
+.btnsContainer {
+	font-size: 1.5rem;
+	opacity: 0;
+	z-index: 99;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	position: absolute;
+	bottom: 10px;
+	left: 0;
+	transition: 0.2s ease-in-out;
+}
+.qrItem .qrImgContainer .downloadBtn,
+.qrItem .qrImgContainer .deleteBtn {
+	color: cornflowerblue;
+	padding: 5px;
+	transition: 0.2s ease-in-out;
+	pointer-events: none;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0.5;
+}
+.qrItem .qrImgContainer .deleteBtn {
+	color: #e63946;
+	margin-left: 10px;
+}
+.qrItem .qrImgContainer .downloadBtn:hover,
+.qrItem .qrImgContainer .deleteBtn:hover {
+	opacity: 1;
+}
+.qrImgContainer .downloadBtn:hover {
+	background: #6495ed80;
+}
+.qrImgContainer .deleteBtn:hover {
+	background: #e6394680;
+}
+.qrItem .qrImgContainer:hover .btnsContainer {
+	opacity: 0.8;
+}
+.qrItem .qrImgContainer .btnsContainer:hover {
+	opacity: 1;
+}
+.qrItem .qrImgContainer:hover .btnsContainer .downloadBtn,
+.qrItem .qrImgContainer:hover .btnsContainer .deleteBtn {
+	cursor: pointer;
+	pointer-events: all;
+}
+@media only screen and (max-width: 500px) {
+	#app {
+		display: grid;
+		overflow: auto;
+	}
+	#qrList {
+		grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+		padding-bottom: 1rem;
+		height: 100%;
+		position: relative;
+	}
+	#app.active #qrListContainer {
+		width: 100%;
+	}
+	#qrForm .mainInput {
+		margin-bottom: 10px;
+	}
+	#optionalText {
+		margin-bottom: 10px;
+	}
+	#qrForm .formInput input,
+	#qrForm .formInput select {
+		padding: 0.5rem;
+	}
+	#qrForm .formInput label,
+	#qrForm .formInput .unit,
+	#qrForm .formInput ion-icon {
+		left: 0.5rem;
+	}
+	#qrForm .formInput .unit,
+	#qrForm .formInput ion-icon {
+		opacity: 1;
+		left: unset;
+		right: 0.5rem;
+	}
+}
