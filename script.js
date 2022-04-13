@@ -12,7 +12,8 @@ const $ = (selector) => document.querySelector(selector),
 	formatInput = $("#formatInput"),
 	pasteBtn = $("#pasteBtn"),
 	colorRefreshBtn = $(".refreshBtn.color"),
-	bgColorRefreshBtn = $(".refreshBtn.bgColor");
+	bgColorRefreshBtn = $(".refreshBtn.bgColor"),
+	swapColorBtn = $("#swapColorBtn");
 let localQr = JSON.parse(localStorage.getItem("qrList")) || [];
 const createItem = (imgSrc, content, sizeValue, format) => {
 	let item = document.createElement("div");
@@ -158,4 +159,12 @@ const deleteQrItem = (item, imgSrc) => {
 	let index = localQr.indexOf(imgSrc);
 	localQr.splice(index, 1);
 	localStorage.setItem("qrList", JSON.stringify(localQr));
+};
+swapColorBtn.onclick = () => {
+	let color = colorInput.value;
+	let bgColor = bgColorInput.value;
+	colorInput.value = bgColor;
+	colorInput.dispatchEvent(new Event("input"));
+	bgColorInput.value = color;
+	bgColorInput.dispatchEvent(new Event("input"));
 };

@@ -408,6 +408,20 @@ input[type="color"]::-webkit-color-swatch {
 	cursor: pointer;
 	pointer-events: all;
 }
+#swapColorBtn {
+    margin: auto 1rem;
+    cursor: pointer;
+    padding: .75rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s ease-in-out;
+}
+#swapColorBtn:hover {
+    background: #6495ed80;
+    color: #333;
+}
 @media only screen and (max-width: 500px) {
 	#app {
 		display: grid;
